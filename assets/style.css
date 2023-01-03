@@ -1,0 +1,52 @@
+#js-quiz-title {
+    font-size: 30px;
+    text-align: center;
+    font-weight: 100px;
+    margin: 20px 0px 20px 0px;
+}
+
+#instructions {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    width: 525px;
+    left: 30em;
+    top: 10em;
+    position: relative;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+
+.content {
+padding-top: 5em;
+display: inline-block;
+text-align: center;
+align-items: center;
+left: 30px;
+}
+
+#timer-para {
+    font-size: 30px;
+}
+
+
+.content > p {
+    font-size: 20px;
+}
+
+#start-button {
+    margin-top: 1em;
+    height: 70px;
+    width: 125px;
+    font-size: 2em;
+    border-radius: 10px;
+}
+
+#start-button:hover {
+    background-color: lightblue;
+}
