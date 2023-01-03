@@ -12,22 +12,20 @@
 #container {
     display: flex;
     justify-content: center;
-    height: 400px;
-    width: 525px;
-    left: 30em;
-    top: 10em;
-    position: relative;
-    border: 2px solid black;
-    border-radius: 10px;
+    align-items: center;
+    height: 700px;
 }
 
 
 .content {
+display: flex;
+flex-direction: column;
 padding-top: 5em;
-display: inline-block;
 text-align: center;
-align-items: center;
-left: 30px;
+height: 400px; 
+width: 525px; 
+border: 2px solid black;
+border-radius: 10px;
 }
 
 #timer-para {

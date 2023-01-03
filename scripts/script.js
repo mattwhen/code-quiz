@@ -43,13 +43,15 @@ function startGame() {
 
     // When called, will begin countdown timer and will reflect changes on screen. 
     function countdownTimer() {
-    var createTimerSpan = document.createElement("div");
-    createTimerSpan.setAttribute("id", "timer");
-    createTimerSpan.textContent = "Timer: " + timer;
-    containerEl.appendChild(createTimerSpan); 
+    // var createTimerSpan = document.createElement("div");
+    // createTimerSpan.setAttribute("id", "timer");
+    containerEl.textContent = "Timer: " + timer;
+    // containerEl.appendChild(createTimerSpan); 
 
     // When timer reaches 0, it will clear timer. 
       if (timer === 0) {
+        containerEl.innerHTML = "";
+        containerEl.textContent = "Time's up! Your answers have been submitted.";
         clearInterval(timeInterval);
     }
     timer--; 
