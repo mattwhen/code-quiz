@@ -16,6 +16,10 @@
     height: 700px;
 }
 
+.choice-options {
+    display: block;
+}
+
 
 .content {
 display: flex;

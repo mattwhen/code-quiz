@@ -1,13 +1,16 @@
 // Declare variables here
 var startBtn = document.getElementById("start-button"); 
-var containerEl = document.querySelector(".content");
+var contentEl = document.querySelector(".content");
+var containerEl = document.querySelector("#container");
+var questionDiv = document.querySelector("#question-content");
+var btnContainer = document.querySelector("#button-container");
 var timerEl = document.querySelector('#timer');
 
 // Declare questions and initialize objects stored in a array.
 var questionsArr = [
    {
         "question": "What's 2 + 2?",
-        "choices": ["a", "b", "c", "d"],
+        "choices": ["6", "5", "4", "3"],
         "answer": "b"
     }, 
 
@@ -33,26 +36,32 @@ var timer = 60;
 // Start the quiz upon click and display the first question along with the countdown timer. 
 function startGame() {
     // Clears existing content that was in container before clicking "Start" button. 
-   containerEl.innerHTML = "";
+   contentEl.innerHTML = "";
 
     // Create timer element and append to the the content container
-    var createQuestion = document.createElement("div");
+    var createTimer = document.createElement("div");
 
 
     // Call the countDown function using the setInterval() method, every second. 
-    var timeInterval = setInterval(countdownTimer, 1000);
+    var timeInterval = setInterval(startTimer, 1000);
 
-    // When called, will begin countdown timer and will render changes on screen. 
-    function countdownTimer() {
-    createQuestion.textContent = "Timer: ";
-    containerEl.appendChild(createQuestion);
-    containerEl.textContent = "Timer: " + timer;
-    document.querySelector(".content").setAttribute("style", "font-size: 30px;");
+    // When called, will begin countdown timer and show it in the container. 
+        function startTimer() {
+            createTimer.textContent = "Timer: " + timer;
+            containerEl.appendChild(createTimer);
+            document.querySelector(".content").setAttribute("style", "font-size: 30px;");   
+        
+
+    // function startTimer() {
+    // createTimer.textContent = "Timer: ";
+    // contentEl.appendChild(createTimer);
+    // contentEl.textContent = "Timer: " + timer;
+    // document.querySelector(".content").setAttribute("style", "font-size: 30px;");
 
     // When timer reaches 0, it will clear timer. 
       if (timer === 0) {
-        containerEl.innerHTML = "";
-        containerEl.textContent = "Time's up! Your answers have been submitted.";
+        contentEl.innerHTML = "";
+        contentEl.textContent = "Time's up! Your answers have been submitted.";
         clearInterval(timeInterval);
     }
     timer--; 
@@ -61,8 +70,21 @@ function startGame() {
 };
 
 function renderQuestion() {
-    var createUl = document.createElement('div');
-    createUl.textContent = questionsArr[2].question; 
-    containerEl.appendChild(createUl); 
+    var createUl = document.createElement('ul');
+    createUl.textContent = questionsArr[0].question; 
+    contentEl.appendChild(createUl); 
+    
+
+    // Render choice button
+    for (var i = 0; i <= questionsArr.length; i++) {
+        var createChoices = document.createElement('button');
+            createChoices.setAttribute('class', 'choice-options')
+            createChoices.textContent = questionsArr[0].choices[i];
+
+        createUl.appendChild(createChoices);
+    }
+
+
+  
 }
 
