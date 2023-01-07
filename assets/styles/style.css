@@ -1,3 +1,13 @@
+:root {
+    --font-fam: Verdana, Geneva, Tahoma, sans-serif;
+    --primary-color: #9fcbf4;
+    --secondary-color: #1188f7;
+}
+
+body {
+    background-color: #9fcbf4;
+}
+
 #js-quiz-title {
     font-size: 30px;
     text-align: center;
@@ -20,6 +30,7 @@
     display: block;
     width: 50%;
     margin: 15px 0px 15px 0px;
+    
 }
 
 
@@ -44,13 +55,44 @@ border-radius: 10px;
 }
 
 #start-button {
+    background-color: var(--secondary-color);
     margin-top: 1em;
-    height: 70px;
+    padding: 15px;
+    font-family: var(--font-fam);
+    color: white;
     width: 125px;
-    font-size: 2em;
+    font-size: large;
+    border: var(--secondary-color);
     border-radius: 10px;
 }
 
 #start-button:hover {
-    background-color: lightblue;
+    background-color: #edede9;
+    color: black;
+}
+
+div > #view-score {
+    list-style: none;
+}
+
+#view-score a {
+    height: 20px;
+    width: 150px;
+    font-size: 20px;
+    font-family: var(--font-fam);
+    font-size: medium;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: white; 
+    background-color: var(--secondary-color);
+    list-style: none;
+    margin: 15px 0px 0px 15px;
+    border-radius: 10px;
+    display: inline-block;
+} 
+
+#view-score a:hover {
+    background-color: #edede9;
+    color: black;
 }
