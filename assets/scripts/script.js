@@ -81,10 +81,22 @@ function renderQuestion() {
             createChoices.setAttribute('class', 'choice-options')
             createChoices.textContent = questionsArr[0].choices[i];
 
-        createUl.appendChild(createChoices);
-    }
+            createChoices.addEventListener('click', function(event) {
+                
+                if(event.target.innerHTML == 6) {
+                    console.log("Correct!");
+                }
+                else {
+                    console.log("Incorrect, try again!");
+                }
+                    console.log(event.target.innerHTML);
 
 
-  
-}
+            })
+
+            createUl.appendChild(createChoices);
+        }
+};
+
+
 
