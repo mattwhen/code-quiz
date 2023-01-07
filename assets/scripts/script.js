@@ -33,6 +33,9 @@ startBtn.addEventListener("click", startGame);
 // Declare countdown timer variable.
 var timer = 60;
 
+// Declare variable that subtracts 5 seconds from the timer variable if user selects the wrong answer.
+var penaltyTime = 5; 
+
 // Start the quiz upon click and display the first question along with the countdown timer. 
 function startGame() {
     // Clears existing content that was in container before clicking "Start" button. 
@@ -47,19 +50,12 @@ function startGame() {
 
     // When called, will begin countdown timer and show it in the container. 
         function startTimer() {
+            document.querySelector(".content").setAttribute("style", "font-size: 30px;");   
             createTimer.textContent = "Timer: " + timer;
             containerEl.appendChild(createTimer);
-            document.querySelector(".content").setAttribute("style", "font-size: 30px;");   
-        
-
-    // function startTimer() {
-    // createTimer.textContent = "Timer: ";
-    // contentEl.appendChild(createTimer);
-    // contentEl.textContent = "Timer: " + timer;
-    // document.querySelector(".content").setAttribute("style", "font-size: 30px;");
 
     // When timer reaches 0, it will clear timer. 
-      if (timer === 0) {
+      if (timer <= 0) {
         contentEl.innerHTML = "";
         contentEl.textContent = "Time's up! Your answers have been submitted.";
         clearInterval(timeInterval);
@@ -82,12 +78,21 @@ function renderQuestion() {
             createChoices.textContent = questionsArr[0].choices[i];
 
             createChoices.addEventListener('click', function(event) {
-                
+
                 if(event.target.innerHTML == 6) {
                     console.log("Correct!");
+                    console.log(event.target.tagName);
+                    var createDiv = document.createElement('div');
+                    createDiv.textContent = "Correct!"; 
+                    createUl.appendChild(createDiv);
+                    
                 }
+
                 else {
-                    console.log("Incorrect, try again!");
+                    var createDiv = document.createElement('div');
+                    createDiv.textContent = "Wrong!";
+                    createUl.appendChild(createDiv);
+                    timer -= penaltyTime; // Subtracts 5 seconds from remaining time left on every wrong selection. 
                 }
                     console.log(event.target.innerHTML);
 
