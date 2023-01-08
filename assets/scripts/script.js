@@ -130,10 +130,16 @@ function renderQuestion() {
                         var createLabel = document.createElement('label');
                         var createInput = document.createElement('input');
 
+                        // Create a submit button 
+                        var createSubmitBtn = document.createElement('button');
+                        createSubmitBtn.innerHTML = "Submit";
+                        createSubmitBtn.setAttribute('id', 'create-submit');
+
                         // Append elements starting with contentEl, which is the parent element.
                         contentEl.appendChild(createForm);
                         createForm.appendChild(createLabel);
                         createForm.appendChild(createInput);
+                        createForm.appendChild(createSubmitBtn);
 
                         // Set Attributes for the elements
                         createLabel.setAttribute('for', 'initials');
