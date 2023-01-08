@@ -1,3 +1,5 @@
+/* REFERENCES: https://www.w3schools.com/quiztest/ used for Quiz questions. */ 
+
 // Declare variables here
 var startBtn = document.getElementById("start-button"); 
 var contentEl = document.querySelector(".content");
@@ -13,21 +15,21 @@ var questionIndex = 0;
 // Declare questions and initialize objects stored in a array.
 var questionsArr = [
    {
-        "question": "What's 2 + 2?",
-        "choices": ["6", "5", "4", "3"],
-        "answer": "4"
+        "question": "Which of the following variables is undefined (has no value)?",
+        "choices": ["var age = 27;", "var catName = Simba;", "var boba;", "var carMileage = 200000;"],
+        "answer": "var boba;"
     }, 
 
     {
-        "question": "What color is the sky?",
-        "choices": ["red", "blue", "orange", "black"],
-        "answer": "blue"
+        "question": "How do you call a function named: myFunction?",
+        "choices": ["myfunction();", "myFunction();", "getOverHere();", "myFunction;"],
+        "answer": "myFunction();"
     },
 
     {
-        "question": "How many letters are in the English alphabet?",
-        "choices": ["a", "b", "c", "d"],
-        "answer": "d"
+        "question": "How do you write 'Hello World' in an alert box?",
+        "choices": ["alert('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "msgBox('Hello World')"],
+        "answer": "alert('Hello World');"
     }
 ];
 
@@ -65,14 +67,31 @@ var questionsArr = [
     // When timer reaches 0, it will clear timer. 
       if (timer <= 0) {
         contentEl.innerHTML = "";
-        contentEl.textContent = "Time's up! Your answers have been submitted.";
         contentEl.textContent = "Time's up! Your answers have been submitted." + " Your score is: " + timer;
+
+        // Create a form with input fields with a type of "text" and append to form element.
+        var createForm = document.createElement('form');
+        var createLabel = document.createElement('label');
+        var createInput = document.createElement('input');
+
+        // Append elements starting with contentEl, which is the parent element.
+        contentEl.appendChild(createForm);
+        createForm.appendChild(createLabel);
+        createForm.appendChild(createInput);
+
+        // Set Attributes for the elements
+        createLabel.setAttribute('for', 'initials');
+        createInput.setAttribute('type', 'text');
+        createInput.setAttribute('id', 'initials');
+
+        // Add label to the input field that is linked when clicking on the label. 
+        createLabel.innerHTML = "Initials: ";
 
         clearInterval(timeInterval);
     }
     timer--; 
 };
-    renderQuestion(); 
+    renderQuestion(); // Renders question to the page upon clicking the "Start!" button.
 };
 
 function renderQuestion() {
@@ -81,8 +100,9 @@ function renderQuestion() {
     createUl.textContent = questionsArr[questionIndex].question; 
     contentEl.appendChild(createUl); 
     
+    
 
-    // Render choice button
+    // Render choices that loops through Array that contain objects.
     for (var i = 0; i <= questionsArr.length; i++) {
         var createChoices = document.createElement('button');
             createChoices.setAttribute('class', 'choice-options')
@@ -91,17 +111,39 @@ function renderQuestion() {
             createChoices.addEventListener('click', function(event) {
                 var newDiv = document.createElement('div');
 
-                if(event.target.textContent == questionsArr[questionIndex].answer) {
-                    var createDiv = document.createElement('div');
-                    createDiv.textContent = "Correct!"; 
-                    newDiv.appendChild(createDiv);
+                /* If target element matches the value in the key "answer", display  */ 
+                if (event.target.textContent == questionsArr[questionIndex].answer) {
+                    // var createDiv = document.createElement('div');
+                    // createDiv.textContent = "Correct!"; 
+                    // newDiv.appendChild(createDiv);
                     questionIndex++; // Increment questionIndex to go through entire length of questionsArr.
 
-                    if (questionIndex >= questionsArr.length) {
+                    /* Renders the final results page where user inputs their initials and can view 
+                    and compare their score to the ones in local storage */ 
+                    if (questionIndex >= questionsArr.length) { 
                         contentEl.innerHTML = "";
                         contentEl.textContent = 'Your answers have been submitted, your score is: ' + timer;
                         clearInterval(timeInterval);
-                        return; 
+
+                        // Create a form with input fields with a type of "text" and append to form element.
+                        var createForm = document.createElement('form');
+                        var createLabel = document.createElement('label');
+                        var createInput = document.createElement('input');
+
+                        // Append elements starting with contentEl, which is the parent element.
+                        contentEl.appendChild(createForm);
+                        createForm.appendChild(createLabel);
+                        createForm.appendChild(createInput);
+
+                        // Set Attributes for the elements
+                        createLabel.setAttribute('for', 'initials');
+                        createInput.setAttribute('type', 'text');
+                        createInput.setAttribute('id', 'initials');
+
+                        // Add label to the input field that is linked when clicking on the label. 
+                        createLabel.innerHTML = "Initials: ";
+
+                        return timer; 
                     }
 
                     else {
@@ -127,14 +169,13 @@ function renderQuestion() {
             createUl.appendChild(createChoices);
         }
 };
-
-
+    // Write a function that will store the user's score and add it to the High Score list.
+    
 
 // Local storage 
-/*
 const users = {
     score: 50,
-    initial: 'jh'
+    initial: 'MN'
 }
 
 localStorage.setItem("my-key", JSON.stringify(users))
@@ -144,4 +185,3 @@ console.log(myUsers);
 console.log(typeof myUsers);
 const myUsersParsed = JSON.parse(myUsers);
 console.log(myUsersParsed)
-*/ 
