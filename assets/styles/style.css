@@ -40,7 +40,7 @@ flex-direction: column;
 padding-top: 5em;
 text-align: center;
 height: 400px; 
-width: 525px; 
+width: 600px; 
 border: 2px solid black;
 border-radius: 10px;
 }
@@ -50,9 +50,13 @@ border-radius: 10px;
 }
 
 
-.content > p {
+#question-content > p {
     font-size: 20px;
+    line-height: 40px;
+
 }
+
+
 
 #start-button {
     background-color: var(--secondary-color);
@@ -71,11 +75,11 @@ border-radius: 10px;
     color: black;
 }
 
-div > #view-score {
+div > #high-score {
     list-style: none;
 }
 
-#view-score a {
+#high-score a {
     height: 20px;
     width: 150px;
     font-size: 20px;
@@ -92,7 +96,7 @@ div > #view-score {
     display: inline-block;
 } 
 
-#view-score a:hover {
+#high-score a:hover {
     background-color: #edede9;
     color: black;
 }

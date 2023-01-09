@@ -102,7 +102,7 @@ function renderQuestion() {
     
     
 
-    // Render choices that loops through Array that contain objects.
+    // Render page that loops through entire Array (questionsArr) which contain the questions and choices.
     for (var i = 0; i <= questionsArr.length; i++) {
         var createChoices = document.createElement('button');
             createChoices.setAttribute('class', 'choice-options')
@@ -130,7 +130,7 @@ function renderQuestion() {
                         var createLabel = document.createElement('label');
                         var createInput = document.createElement('input');
 
-                        // Create a submit button 
+                        // Create a submit button for the user to input initials and save to local storage.
                         var createSubmitBtn = document.createElement('button');
                         createSubmitBtn.innerHTML = "Submit";
                         createSubmitBtn.setAttribute('id', 'create-submit');
@@ -149,7 +149,21 @@ function renderQuestion() {
                         // Add label to the input field that is linked when clicking on the label. 
                         createLabel.innerHTML = "Initials: ";
 
-                        return timer; 
+                        // Target input field text box
+                        var userInitials = document.querySelector('#initials');
+                        var usersInput = userInitials.value; 
+                        console.log(usersInput);
+
+                        createSubmitBtn.addEventListener('click', submitInitials);
+
+                        // Submit user score in local storage using .set() method and use the .get() method to retrieve score. 
+                        function submitInitials() {
+
+                            if (usersInput === null) {
+                                console.log('please input initials');
+                            }
+                        }
+
                     }
 
                     else {
@@ -175,19 +189,21 @@ function renderQuestion() {
             createUl.appendChild(createChoices);
         }
 };
-    // Write a function that will store the user's score and add it to the High Score list.
+    // Write a function that will store the user's score and add it to the Score list.
     
 
-// Local storage 
-const users = {
-    score: 50,
-    initial: 'MN'
-}
 
-localStorage.setItem("my-key", JSON.stringify(users))
 
-const myUsers = localStorage.getItem('my-key');
-console.log(myUsers);
-console.log(typeof myUsers);
-const myUsersParsed = JSON.parse(myUsers);
-console.log(myUsersParsed)
+// // Local storage 
+// const users = {
+//     score: 50,
+//     initial: 'MN'
+// }
+
+// localStorage.setItem("my-key", JSON.stringify(users))
+
+// const myUsers = localStorage.getItem('my-key');
+// console.log(myUsers);
+// console.log(typeof myUsers);
+// const myUsersParsed = JSON.parse(myUsers);
+// console.log(myUsersParsed)
