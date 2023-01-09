@@ -113,9 +113,6 @@ function renderQuestion() {
 
                 /* If target element matches the value in the key "answer", display  */ 
                 if (event.target.textContent == questionsArr[questionIndex].answer) {
-                    // var createDiv = document.createElement('div');
-                    // createDiv.textContent = "Correct!"; 
-                    // newDiv.appendChild(createDiv);
                     questionIndex++; // Increment questionIndex to go through entire length of questionsArr.
 
                     /* Renders the final results page where user inputs their initials and can view 
@@ -154,20 +151,25 @@ function renderQuestion() {
                         var usersInput = userInitials.value; 
                         console.log(usersInput);
 
+                        // Add event listener to final submit button 
                         createSubmitBtn.addEventListener('click', submitInitials);
 
                         // Submit user score in local storage using .set() method and use the .get() method to retrieve score. 
                         function submitInitials() {
 
-                            if (usersInput === null) {
+                            var userScore = localStorage.setItem('user-score', usersInput);
+
+                            if (usersInput === undefined) {
                                 console.log('please input initials');
+
                             }
                         }
 
                     }
 
                     else {
-                        renderQuestion();
+                        // Display next question
+                         renderQuestion();
                     }
                 }
 
