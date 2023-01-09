@@ -148,8 +148,6 @@ function renderQuestion() {
 
                         // Target input field text box
                         var userInitials = document.querySelector('#initials');
-                        var usersInput = userInitials.value; 
-                        console.log(usersInput);
 
                         // Add event listener to final submit button 
                         createSubmitBtn.addEventListener('click', submitInitials);
@@ -157,11 +155,13 @@ function renderQuestion() {
                         // Submit user score in local storage using .set() method and use the .get() method to retrieve score. 
                         function submitInitials() {
 
-                            var userScore = localStorage.setItem('user-score', usersInput);
+                            var userScore = [{'userScore': timer, 'initials': userInitials.value}];
+                            localStorage.setItem('user-score', userScore[0].userScore);
+                            localStorage.setItem('user-initials', userScore[0].initials);
 
-                            if (usersInput === undefined) {
-                                console.log('please input initials');
-
+                            // If input is left intentionally blank, render content to page informing user to input their initials.
+                            if (userInitials.value === "") {
+                                contentEl.textContent = "please input initials";
                             }
                         }
 
